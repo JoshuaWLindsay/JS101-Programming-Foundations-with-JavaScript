@@ -1,0 +1,51 @@
+function doubleOddIndices(numbers) {
+  let doubledNums = [];
+
+  for (let counter = 0; counter < numbers.length; counter += 1) {
+    let currentNumber = numbers[counter];
+
+    if (counter % 2 === 1) {
+      doubledNums.push(currentNumber * 2);
+    } else {
+      doubledNums.push(currentNumber);
+    }
+  }
+
+  return doubledNums;
+}
+
+
+
+
+let myNumbers = [1, 4, 3, 7, 2, 6];
+console.log(doubleOddIndices(myNumbers));  // => [2, 4, 6, 14, 2, 6]
+
+// not mutated
+console.log(myNumbers);                    // => [1, 4, 3, 7, 2, 6]
+
+
+
+function multiplyOddIndices(numbers, factor) {
+  let multipliedNums = [];
+
+  for (let counter = 0; counter < numbers.length; counter += 1) {
+    let currentNumber = numbers[counter];
+
+    if (counter % 2 === 1) {
+      multipliedNums.push(currentNumber * factor);
+    } else {
+      multipliedNums.push(currentNumber);
+    }
+  }
+
+  return multipliedNums;
+}
+
+
+
+
+let myNumbers2 = [1, 4, 3, 7, 2, 6];
+console.log(multiplyOddIndices(myNumbers2, 3));  // => [1, 12, 3, 21, 2, 18]
+
+// not mutated
+console.log(myNumbers2);                    // => [1, 4, 3, 7, 2, 6]
