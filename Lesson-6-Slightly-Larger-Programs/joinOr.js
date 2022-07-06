@@ -1,4 +1,4 @@
-function joinOr (array, spacing = ', ', otherOr = 'or') {
+function joinOr(array, spacing = ', ', otherOr = 'or') {
   let string;
   if (array.length <= 1) {
     string = array.join();

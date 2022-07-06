@@ -8,7 +8,7 @@ const INITIAL_MARKER = ' '; // Unchosen square
 const HUMAN_MARKER = 'X'; // Human plays 'X'
 const COMPUTER_MARKER = 'O'; // Computer plays 'O'
 
-function joinOr (array, spacing = ', ', otherOr = 'or') {
+function joinOr(array, spacing = ', ', otherOr = 'or') {
   let string;
   if (array.length <= 1) {
     string = array.join();
