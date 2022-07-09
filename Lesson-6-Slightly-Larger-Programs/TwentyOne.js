@@ -15,7 +15,7 @@ function joinAnd(array, spacing = ', ', otherOr = 'and') {
     `${spacing}${otherOr} ${array[array.length - 1]}`;
   } 
   return string;
-};
+}
 
 const playerHand = [];
 const dealerHand = [];
@@ -56,9 +56,7 @@ function shuffle(deck) {
   return deck;
 }
 
-function deal(deck) {
-  prompt ('Welcome to TwentyOne!');
-  
+function deal(deck) {  
   playerHand.push(deck.pop());
   dealerHand.push(deck.pop());
   playerHand.push(deck.pop());
@@ -86,21 +84,23 @@ function handValue(hand) {
     return previousValue + currentValue;
   });
 
-  if (cardValues.includes(11)) {
-    if (sum > 21) {
-      let index = cardValues.findIndex(i => i === 11);
-      cardValues[index] = 1;
-    }
+  while (cardValues.includes(11) && sum > 21) {
+    let index = cardValues.findIndex(i => i === 11);
+    cardValues[index] = 1;
     return sum = cardValues.reduce(function(previousValue, currentValue) {
       return previousValue + currentValue;
     });
-  };
+  }
 
   return sum;
 }
 
 function playerTurn(deck) {
-  while (true) {
+  while (handValue(playerHand) <= 21) {
+    if (handValue(playerHand) === 21) {
+      prompt(`You have TwentyOne!`)
+      return false;
+    }
     prompt('Would you like to hit? (y or n)');
     let answer = readline.question().toLowerCase();
     while (answer !== 'y' && answer !== 'n') {
@@ -119,44 +119,45 @@ function playerTurn(deck) {
     if (answer === 'n') {
       prompt(`Your hand's value is ${handValue(playerHand)}`);
       return false;
-    };
+    }
     if (handValue(playerHand) > 21) {
       prompt(`You have a busted hand! (Value over 21)`)
       return false;
     }
-  };
-};
+  }
+}
 
 function dealerTurn(deck) {
   let dealerCards = [];
+  dealerHand.forEach(card => {
+    dealerCards.push(`${card['face']} of ${card['suit']}`);
+  });
 
-  if (handValue(playerHand) > 21) {
-    return false;
-  } else if (handValue(dealerHand) >= 17 && handValue(dealerHand) <= 21) {
-    dealerHand.forEach(card => {
-      dealerCards.push(`${card['face']} of ${card['suit']}`);
-    });
+  if (handValue(playerHand) < 21) {
+
+    prompt(`Dealer's cards are: ${joinAnd(dealerCards)}`);  
+    prompt(`Dealer's hand value is ${handValue(dealerHand)}`);
+
+    if (handValue(dealerHand) >= 17) {
+      return false;
+    }
+
+    if (handValue(dealerHand) < 17) {
+      prompt(`Dealer's hand value is less than 17; hit!`);
+      dealerHand.push(deck.pop());
+      dealerCards.push(
+        `${dealerHand[dealerHand.length - 1]['face']} of ${dealerHand[dealerHand.length - 1]['suit']}`);
+      prompt(`Dealer's cards are: ${joinAnd(dealerCards)}`);  
+      prompt(`Dealer's hand value is ${handValue(dealerHand)}`);
+    } 
     
-    prompt(`Dealer's cards are: ${joinAnd(dealerCards)}`);  
-    prompt(`Dealer's hand value is ${handValue(dealerHand)}`);
-  }
-  while (handValue(dealerHand) < 17) {
-    prompt(`Dealer's hand value is less than 17; hit!`);
-    dealerHand.push(deck.pop());
-
-    dealerHand.forEach(card => {
-      dealerCards.push(`${card['face']} of ${card['suit']}`);
-    })
-    prompt(`Dealer's cards are: ${joinAnd(dealerCards)}`);  
-    prompt(`Dealer's hand value is ${handValue(dealerHand)}`);
-  } 
-  
-  if (handValue(dealerHand) > 21) {
-    prompt(`Dealer has a busted hand! (Value over 21)`)
-    return false;
+    if (handValue(dealerHand) > 21) {
+      prompt(`Dealer has a busted hand! (Value over 21)`);
+      return false;
+    }
   }
 }
-// What about twentyone on draw?
+
 function declareWinner() {
   if ((handValue(playerHand) > handValue(dealerHand) && 
        handValue(playerHand) <= 21) ||
@@ -175,6 +176,8 @@ let newDeck = deck();
 shuffle(newDeck);
 
 while (true) {
+  prompt ('Welcome to TwentyOne!');
+
   playerHand.length = 0;
   dealerHand.length = 0;
 
@@ -186,6 +189,6 @@ while (true) {
   let answer = readline.question().toLowerCase();
   if (answer === 'n') {
     prompt(`Thank you for playing!`);
-    return false;
+    break;
   }
-};
+}
