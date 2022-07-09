@@ -583,17 +583,315 @@ function prompt(string) {
 // stringy(4);    // "1010"
 // stringy(7);    // "1010101"
 
-function findFibonacciIndexByLength(length) {
-  // fibonacci
-  let number = [1, 1];
-  let lastElement = number[number.length - 1];
-  while (String(lastElement).length < length) {
-    number.push(number[number.length - 1] + number[number.length - 2]);
-  }
-  console.log(number);
-}
+// function findFibonacciIndexByLength(digits) {
+//   let number = [1n, 1n];
+//   let lastElement = number[number.length - 1];
+//   let secondToLast = number[number.length - 2];
+//   let newElement = lastElement + secondToLast;
+//   while (String(lastElement).length < digits) {
+//     number.push(newElement);
+//     lastElement = number[number.length - 1];
+//     secondToLast = number[number.length - 2];
+//     newElement = lastElement + secondToLast;
+//   }
+//   return BigInt(number.length);
+// }
 
-findFibonacciIndexByLength(5);
+// console.log(findFibonacciIndexByLength(2n) === 7n);    // 1 1 2 3 5 8 13
+// console.log(findFibonacciIndexByLength(3n) === 12n);   // 1 1 2 3 5 8 13 21 34 55 89 144
+// console.log(findFibonacciIndexByLength(10n) === 45n);
+// console.log(findFibonacciIndexByLength(16n) === 74n);
+// console.log(findFibonacciIndexByLength(100n) === 476n);
+// console.log(findFibonacciIndexByLength(1000n) === 4782n);
+// console.log(findFibonacciIndexByLength(10000n) === 47847n);
+
+// The last example may take a minute or so to run.
+
+// function triangle(integer) {
+//   for (let i = 1; i <= integer; i++) {
+//     console.log(' '.repeat(integer - i) + '*'.repeat(i));
+//   }
+// }
+
+// triangle(5);
+// triangle(9);
+
+// function madlibs() {
+//   prompt(`Enter a noun:`);
+//   let noun = readline.question();
+//   prompt(`Enter a verb:`);
+//   let verb = readline.question();
+//   prompt(`Enter an adjective:`);
+//   let adjective = readline.question();
+//   prompt(`Enter an adverb:`);
+//   let adverb = readline.question();
+
+//   console.log(`Do you ${verb} your ${adjective} ${noun} ${adverb}? That's hilarious!`);
+//   console.log(`The ${adjective} ${noun} ${verb}s ${adverb} over the lazy ${noun}.`);
+//   console.log(`The ${noun} ${adverb} ${verb}s up ${adjective} Joe's turtle.`);
+// }
+
+// madlibs();
+
+// function doubleNumber(number) {
+//   let numStr = String(number);
+//   if (numStr.length % 2 === 0) {
+//     return (numStr.slice(0, numStr.length / 2)) ===
+//            (numStr.slice(numStr.length / 2));
+//   } else {
+//     return false;
+//   }
+// }
+
+// function twice(number) {
+//   if (doubleNumber(number)) {
+//     return number;
+//   } else {
+//     return number * 2;
+//   }
+// }
+
+// twice(37);          // 74
+// twice(44);          // 44
+// twice(334433);      // 668866
+// twice(444);         // 888
+// twice(107);         // 214
+// twice(103103);      // 103103
+// twice(3333);        // 3333
+// twice(7676);        // 7676
+
+// function getGrade(grade1, grade2, grade3) {
+//   let score = (grade1 + grade2 + grade3) / 3;
+
+//   if (score >= 90) {
+//     return 'A';
+//   } else if (score >= 80) {
+//     return 'B';
+//   } else if (score >= 70) {
+//     return 'C';
+//   } else if (score >= 60) {
+//     return 'D';
+//   } else if (score < 60) {
+//     return 'F';
+//   }
+// }
+
+// getGrade(95, 90, 93);    // "A"
+// getGrade(50, 50, 95);    // "D"
+
+// function cleanUp(string) {
+//   let newString = string.replace(/[^a-z]/gi, ' ').replace(/\s+/gi, ' ');
+//   return newString;
+// }
+
+// cleanUp("---what's my +*& line?");    // " what s my line "
+
+// function century(year) {
+//   let century = Math.floor((year - 1) / 100) + 1;
+
+//   if (century % 100 >= 11 && century % 100 <= 13) {
+//     century += 'th';
+//   } else if (century % 10 === 1) {
+//     century += 'st';
+//   } else if (century % 10 === 2) {
+//     century += 'nd';
+//   } else if (century % 10 === 3) {
+//     century += 'rd';
+//   } else {
+//     century += 'th';
+//   }
+
+//   return century;
+// }
+
+// century(2000);        // "20th"
+// century(2001);        // "21st"
+// century(1965);        // "20th"
+// century(256);         // "3rd"
+// century(5);           // "1st"
+// century(10103);       // "102nd"
+// century(1052);        // "11th"
+// century(1127);        // "12th"
+// century(11201);       // "113th"
+// century(13456);       // "135th"
+
+// let age = Math.floor(Math.random() * 101) +20;
+
+// prompt(`Teddy is ${age} years old!`);
+
+// function sixthNumber() {
+//   let numberArray = [];
+//   prompt(`Enter the 1st number:`);
+//   numberArray.push(readline.question());
+//   prompt(`Enter the 2nd number:`);
+//   numberArray.push(readline.question());
+//   prompt(`Enter the 3rd number:`);
+//   numberArray.push(readline.question());
+//   prompt(`Enter the 4th number:`);
+//   numberArray.push(readline.question());
+//   prompt(`Enter the 5th number:`);
+//   numberArray.push(readline.question());
+//   prompt(`Enter the last number:`);
+//   let lastNumber = readline.question();
+
+//   if (numberArray.includes(lastNumber)) {
+//   prompt(`The number ${lastNumber} appears in ${numberArray.join()}.`);
+//   } else {
+//   prompt(`The number ${lastNumber} does not appear in ${numberArray.join()}.`);
+//   }
+// }
+
+// sixthNumber();
+
+// function whenRetire() {
+//   prompt(`What is your age?`);
+//   let age = readline.question();
+//   prompt(`At what age would you like to retire?`);
+//   let retireAge = readline.question();
+
+//   let currentYear = new Date().getFullYear();
+//   let yearsOfWork = retireAge - age;
+
+//   prompt(`It's ${currentYear}. You will retire in ${currentYear + yearsOfWork}.`);
+//   prompt(`You have only ${yearsOfWork} years of work to go!`);
+// }
+
+// whenRetire();
+
+// function isPalindrome(string) {
+//   let reverse = string.split('').reverse().join('');
+
+//   return string === reverse;
+// }
+
+// isPalindrome('madam');               // true
+// isPalindrome('Madam');               // false (case matters)
+// isPalindrome("madam i'm adam");      // false (all characters matter)
+// isPalindrome('356653');              // true
+
+// function isRealPalindrome(string) {
+//   let alphaNum = [];
+
+//   for (let i = 0; i < string.length; i++) {
+//     if (string[i].match(/^[a-z0-9]+$/i)) {
+//       alphaNum.push(string[i]);
+//     }
+//   }
+
+//   string = alphaNum.join('').toLowerCase();
+//   return string === string.split('').reverse().join('');
+// }
+
+// isRealPalindrome('madam');               // true
+// isRealPalindrome('Madam');               // true (case does not matter)
+// isRealPalindrome("Madam, I'm Adam");     // true (only alphanumerics matter)
+// isRealPalindrome('356653');              // true
+// isRealPalindrome('356a653');             // true
+// isRealPalindrome('123ab321');            // false
+
+// function isPalindromicNumber(number) {
+//   let numStr = String(number);
+//   let reverse = numStr.split('').reverse().join('');
+
+//   return numStr === reverse;
+// }
+
+// isPalindromicNumber(34543);        // true
+// isPalindromicNumber(123210);       // false
+// isPalindromicNumber(22);           // true
+// isPalindromicNumber(5);            // true
+
+// function runningTotal(array) {
+//   let runningTotal = 0;
+//   // let newArray = [];
+//   // for (let i = 0; i < array.length; i++) {
+//   //   runningTotal += array[i];
+//   //   newArray.push(runningTotal);
+//   // }
+//   array = array.map(element => {
+//     return runningTotal += element;
+//   })
+//   return array;
+//   // return newArray;
+// }
+
+// runningTotal([2, 5, 13]);             // [2, 7, 20]
+// runningTotal([14, 11, 7, 15, 20]);    // [14, 25, 32, 47, 67]
+// runningTotal([3]);                    // [3]
+// runningTotal([]);                     // []
+
+// function wordSizes(string) {
+//   let wordArray = string.split(' ');
+
+//   wordArray = wordArray.map(element => element.length);
+//   let wordLengths = {};
+//   wordArray.forEach(element => {
+//     if (wordLengths[element]) {
+//       wordLengths[element] += 1;
+//     } else if (element === 0) {
+//     } else {
+//       wordLengths[element] = 1;
+//     }
+//   })
+//   console.log(wordLengths);
+// }
+
+// wordSizes('Four score and seven.');                       // { "3": 1, "4": 1, "5": 1, "6": 1 }
+// wordSizes('Hey diddle diddle, the cat and the fiddle!');  // { "3": 5, "6": 1, "7": 2 }
+// wordSizes("What's up doc?");                              // { "2": 1, "4": 1, "6": 1 }
+// wordSizes('');                                            // {}
+
+// function wordSizes(string) {
+//   let wordArray = string.split(' ');
+
+//   wordArray = wordArray.map(element => {
+//     element = element.replace(/[^a-z]/gi, '');
+//     return element.length;
+//   });
+//   let wordLengths = {};
+//   wordArray.forEach(element => {
+//     if (wordLengths[element]) {
+//       wordLengths[element] += 1;
+//     } else if (element === 0) {
+//       return false;
+//     } else {
+//       wordLengths[element] = 1;
+//     }
+//   })
+//   console.log(wordLengths);
+// }
+
+// wordSizes('Four score and seven.');                       // { "3": 1, "4": 1, "5": 2 }
+// wordSizes('Hey diddle diddle, the cat and the fiddle!');  // { "3": 5, "6": 3 }
+// wordSizes("What's up doc?");                              // { "2": 1, "3": 1, "5": 1 }
+// wordSizes('');                                            // {}
+
+// function swap(string) {
+//   let wordArray = string.split(' ');
+//   wordArray = wordArray.map(element => {
+//     element = element.split('');
+//     let first = element.shift();
+//     let last = element.pop();
+//     element.push(first);
+//     element.unshift(last);
+//     return element = element.join('');
+//   })
+//   return wordArray.join(' ');
+// }
+
+// swap('Oh what a wonderful day it is');  // "hO thaw a londerfuw yad ti si"
+// swap('Abcde');                          // "ebcdA"
+// swap('a');                              // "a"
+
+
+
+
+
+
+
+
+
+
 
 
 
