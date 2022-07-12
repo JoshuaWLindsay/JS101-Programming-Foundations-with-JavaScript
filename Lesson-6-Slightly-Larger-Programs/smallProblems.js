@@ -883,17 +883,344 @@ function prompt(string) {
 // swap('Abcde');                          // "ebcdA"
 // swap('a');                              // "a"
 
+// function dms(degree) {
+//   while (degree > 360) {
+//     degree = degree - 360;
+//   }
+//   while (degree < 0) {
+//     degree = degree + 360;
+//   }
+//   let minute = (degree - Math.floor(degree)) * 60;
+//   let roundMinute = String(Math.floor(minute)).padStart(2, 0);
+//   let second = String(Math.floor((minute - Math.floor(minute)) * 60)).padStart(2, 0);
+//   if (degree === 360) {
+//     console.log(`360°00'00" or 0°00'00"`);
+//   } else {
+//     console.log(`${Math.floor(degree)}\xB0${roundMinute}'${second}"`);
+//   }
+// }
 
+// dms(30);           // 30°00'00"
+// dms(76.73);        // 76°43'48"
+// dms(254.6);        // 254°35'59"
+// dms(93.034773);    // 93°02'05"
+// dms(0);            // 0°00'00"
+// dms(360);          // 360°00'00" or 0°00'00"
+// dms(-1);   // 359°00'00"
+// dms(400);  // 40°00'00"
+// dms(-40);  // 320°00'00"
+// dms(-420); // 300°00'00"
 
+// function union(array1, array2) {
+//   let combined = array1.slice();
+//   array2.forEach(element => {
+//     if (!array1.includes(element)) {
+//       combined.push(element);
+//     }
+//   })
+//   return combined;
+// }
 
+// union([1, 3, 5], [3, 6, 9]);    // [1, 3, 5, 6, 9]
 
+// function halvsies(array) {
+//   let newArray = []
+//   if (array.length % 2 === 0) {
+//     newArray = [array.slice(0, array.length / 2), array.slice(array.length / 2)];
+//   } else {
+//     newArray = [array.slice(0, (array.length + 1) / 2), array.slice((array.length + 1) / 2)];
+//   }
+//   return newArray;
+// }
 
+// halvsies([1, 2, 3, 4]);       // [[1, 2], [3, 4]]
+// halvsies([1, 5, 2, 4, 3]);    // [[1, 5, 2], [4, 3]]
+// halvsies([5]);                // [[5], []]
+// halvsies([]);                 // [[], []]
 
+// function findDup(array) {
+//   array.sort();
+//   let repeat;
+//   array.forEach(element => {
+//     if (element === repeat) {
+//       return element;
+//     } else {
+//       repeat = element;
+//     }
+//   })
+// }
 
+// findDup([1, 5, 3, 1]);                                // 1
+// findDup([18,  9, 36, 96, 31, 19, 54, 75, 42, 15,
+//          38, 25, 97, 92, 46, 69, 91, 59, 53, 27,
+//          14, 61, 90, 81,  8, 63, 95, 99, 30, 65,
+//          78, 76, 48, 16, 93, 77, 52, 49, 37, 29,
+//          89, 10, 84,  1, 47, 68, 12, 33, 86, 60,
+//          41, 44, 83, 35, 94, 73, 98,  3, 64, 82,
+//          55, 79, 80, 21, 39, 72, 13, 50,  6, 70,
+//          85, 87, 51, 17, 66, 20, 28, 26,  2, 22,
+//          40, 23, 71, 62, 73, 32, 43, 24,  4, 56,
+//           7, 34, 57, 74, 45, 11, 88, 67,  5, 58]);    // 73
 
+// function interleave(array1, array2) {
+//   let newArray = [];
+//   let count = 0;
+//   while (array1.length > 0 || array2.length > 0) {
+//     if (count % 2 === 0) {
+//       newArray.push(array1.shift());
+//       count += 1;
+//     } else {
+//       newArray.push(array2.shift());
+//       count += 1;
+//     }
+//   }
+//   return newArray;
+// }
 
+// interleave([1, 2, 3], ['a', 'b', 'c']);    // [1, "a", 2, "b", 3, "c"]
 
+// function multiplicativeAverage(array) {
+//   let product = 1;
+//   array.forEach(element => product *= element);
+//   let average = product / array.length;
+//   return String(average.toFixed(3));
+// }
 
+// multiplicativeAverage([3, 5]);                   // "7.500"
+// multiplicativeAverage([2, 5, 7, 11, 13, 17]);    // "28361.667"
+
+// function multiplyList(array1, array2) {
+//   let productArray = [];
+//   array1.forEach((element, index) => {
+//     productArray.push(element * array2[index]);
+//   })
+//   return productArray;
+// }
+
+// multiplyList([3, 5, 7], [9, 10, 11]);    // [27, 50, 77]
+
+// function digitList(integer) {
+//   let digits = String(integer).split('');
+//   digits = digits.map(element => Number(element));
+//   console.log(digits);
+// }
+
+// digitList(12345);       // [1, 2, 3, 4, 5]
+// digitList(7);           // [7]
+// digitList(375290);      // [3, 7, 5, 2, 9, 0]
+// digitList(444);         // [4, 4, 4]
+
+// function countOccurrences(array) {
+//   let objects = {};
+//   array.forEach(element => {
+//     if (objects[element]) {
+//       objects[element] += 1;
+//     } else {
+//     objects[element] = 1;
+//     }
+//   });
+//   for (const [key, value] of Object.entries(objects)) {
+//     console.log(`${key} => ${value}`);
+//   }
+// }
+
+// let vehicles = ['car', 'car', 'truck', 'car', 'SUV', 'truck',
+//                 'motorcycle', 'motorcycle', 'car', 'truck'];
+
+// countOccurrences(vehicles);
+
+// // console output -- your output sequence may be different
+// // car => 4
+// // truck => 3
+// // SUV => 1
+// // motorcycle => 2
+
+// function average(array) {
+//   let sum = 0;
+//   // array.forEach(element => sum += element);
+//   sum = array.reduce((previousValue, currentValue) => previousValue + currentValue,
+//   sum);
+//   let average = Math.floor(sum / array.length);
+//   console.log(average);
+// }
+
+// average([1, 5, 87, 45, 8, 8]);       // 25
+// average([9, 47, 23, 95, 16, 52]);    // 40
+
+// function timeOfDay(minutes) {
+//   let hrCount;
+//   if (minutes < 0) {
+//     hrCount = 23;
+
+//     while (Math.abs(minutes) >= 60) {
+//       minutes += 60;
+//       hrCount -= 1;
+//     }
+  
+//     while (hrCount < 0) {
+//       hrCount += 24;
+//     }
+
+//     minutes = 60 + minutes;
+  
+//   } else {
+//     hrCount = 0;
+
+//     while (Math.abs(minutes) >= 60) {
+//       minutes -= 60;
+//       hrCount += 1;
+//     }
+
+//     while (hrCount > 24) {
+//       hrCount -= 24;
+//     }
+//   }
+
+//   return `${String(hrCount).padStart(2, 0)}:${String(minutes).padStart(2, 0)}`;
+// }
+
+// console.log(timeOfDay(0) === "00:00");
+// console.log(timeOfDay(-3) === "23:57");
+// console.log(timeOfDay(35) === "00:35");
+// console.log(timeOfDay(-1437) === "00:03");
+// console.log(timeOfDay(3000) === "02:00");
+// console.log(timeOfDay(800) === "13:20");
+// console.log(timeOfDay(-4231) === "01:29");
+
+// function afterMidnight(time) {
+//   let hours = Number(time.slice(0, 2));
+//   if (hours === 24) hours = 0;
+//   let minutes = Number(time.slice(3));
+//   return hours * 60 + minutes;
+// }
+
+// function beforeMidnight(time) {
+//   let hours = 24 - Number(time.slice(0, 2));
+//   if (hours === 24) hours = 0;
+//   let minutes = Number(time.slice(3));
+//   return hours * 60 - minutes;
+// }
+
+// console.log(afterMidnight("00:00") === 0);
+// console.log(beforeMidnight("00:00") === 0);
+// console.log(afterMidnight("12:34") === 754);
+// console.log(beforeMidnight("12:34") === 686);
+// console.log(afterMidnight("24:00") === 0);
+// console.log(beforeMidnight("24:00") === 0);
+
+// function repeater(string) {
+//   let newWord = '';
+//   for (let i = 0; i < string.length; i++) {
+//     newWord += string[i] + string[i];
+//   }
+//   return newWord;
+// }
+
+// repeater('Hello');        // "HHeelllloo"
+// repeater('Good job!');    // "GGoooodd  jjoobb!!"
+// repeater('');             // ""
+
+// function doubleConsonants(string) {
+//   let vowels = ['a', 'e', 'i', 'o', 'u'];
+//   string = string.split('').map(letter => {
+//     if (vowels.includes(letter)) {
+//       return letter;
+//     } else if (letter.match(/[A-Za-z]/g)) {
+//       return letter + letter;
+//     } else {
+//       return letter;
+//     }
+//   }).join('');
+//   console.log(string);
+// }
+
+// doubleConsonants('String');          // "SSttrrinngg"
+// doubleConsonants('Hello-World!');    // "HHellllo-WWorrlldd!"
+// doubleConsonants('July 4th');        // "JJullyy 4tthh"
+// doubleConsonants('');                // ""
+
+// function reverseNumber(integer) {
+//   let reverse = Number(String(integer).split('').reverse().join(''));
+//   return reverse;
+// }
+
+// reverseNumber(12345);    // 54321
+// reverseNumber(12213);    // 31221
+// reverseNumber(456);      // 654
+// reverseNumber(12000);    // 21 -- Note that leading zeros in the result get dropped!
+// reverseNumber(1);        // 1
+
+// function centerOf(string) {
+//   if (string.length % 2 === 0) {
+//     return string.slice(string.length / 2 - 1, string.length / 2 + 1);
+//   } else {
+//     return string[(string.length - 1) / 2];
+//   }
+// }
+
+// centerOf('I Love JavaScript'); // "a"
+// centerOf('Launch School');     // " "
+// centerOf('Launch');            // "un"
+// centerOf('Launchschool');      // "hs"
+// centerOf('x');                 // "x"
+
+// function negative(number) {
+//   (number < 0) ? console.log(number): console.log(number * -1);
+// }
+
+// negative(5);     // -5
+// negative(-3);    // -3
+// negative(0);     // -0
+
+// function sequence(count) {
+//   let array = [];
+//   for (let i = 1; i <= count; i++) {
+//     array.push(i);
+//   }
+//   return array;
+// }
+
+// sequence(5);    // [1, 2, 3, 4, 5]
+// sequence(3);    // [1, 2, 3]
+// sequence(1);    // [1]
+
+// function swapName(name) {
+//   let nameArray = name.split(' ');
+//   let lastName = nameArray.pop();
+//   console.log(`${lastName}, ${nameArray.join(' ')}`);
+// }
+
+// swapName('Joe Roberts');    // "Roberts, Joe"
+// swapName('Karl Oskar Henriksson Ragvals');    // "Ragvals, Karl Oskar Henriksson"
+
+// function sequence(count, start) {
+//   let array = [];
+//   for (let i = 1; i <= count; i++) {
+//     array.push(start * i);
+//   }
+//   return array;
+// }
+
+// sequence(5, 1);          // [1, 2, 3, 4, 5]
+// sequence(4, -7);         // [-7, -14, -21, -28]
+// sequence(3, 0);          // [0, 0, 0]
+// sequence(0, 1000000);    // []
+
+// function reverseSentence(string) {
+//   console.log(string.split(' ').reverse().join(' '));
+// }
+
+// reverseSentence('');                       // ""
+// reverseSentence('Hello World');            // "World Hello"
+// reverseSentence('Reverse these words');    // "words these Reverse"
+
+function reverseWords(string) {
+  
+}
+
+reverseWords('Professional');             // "lanoisseforP"
+reverseWords('Walk around the block');    // "Walk dnuora the kcolb"
+reverseWords('Launch School');            // "hcnuaL loohcS"
 
 
 
