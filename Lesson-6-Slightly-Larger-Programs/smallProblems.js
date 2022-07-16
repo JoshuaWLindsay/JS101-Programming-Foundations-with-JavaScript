@@ -761,7 +761,7 @@ function prompt(string) {
 // function isPalindrome(string) {
 //   let reverse = string.split('').reverse().join('');
 
-//   return string === reverse;
+//   return (string === reverse && string.length > 1);
 // }
 
 // isPalindrome('madam');               // true
@@ -1214,13 +1214,258 @@ function prompt(string) {
 // reverseSentence('Hello World');            // "World Hello"
 // reverseSentence('Reverse these words');    // "words these Reverse"
 
-function reverseWords(string) {
-  
-}
+// function reverseWords(string) {
+//   let array = string.split(' ');
+//   array = array.map(word => {
+//     if (word.length >= 5) {
+//       return word.split('').reverse().join('');
+//     } else {
+//       return word;
+//     }
+//   });
+//   return array.join(' ');
+// }
 
-reverseWords('Professional');             // "lanoisseforP"
-reverseWords('Walk around the block');    // "Walk dnuora the kcolb"
-reverseWords('Launch School');            // "hcnuaL loohcS"
+// reverseWords('Professional');             // "lanoisseforP"
+// reverseWords('Walk around the block');    // "Walk dnuora the kcolb"
+// reverseWords('Launch School');            // "hcnuaL loohcS"
 
+// function reverse(array) {
+//   let leftIndex = 0;
+//   let rightIndex = array.length - 1;
 
+//   while (leftIndex < array.length / 2) {
+//     [array[leftIndex], array[rightIndex]] =
+//     [array[rightIndex], array[leftIndex]];
+//     leftIndex += 1;
+//     rightIndex -= 1;
+//   }
+//   return array;
+// }
 
+// let list = [1, 2, 3, 4];
+// let result = reverse(list);
+// console.log(result); // logs [4,3,2,1]
+// console.log(list === result); // logs true
+
+// let list1 = ["a", "b", "c", "d", "e"];
+// let result1 = reverse(list1);
+// console.log(result1); // logs  ["e", "d", "c", "b", "a"]
+// console.log(list1 === result1); // logs true
+
+// let list2 = ["abc"];
+// let result2 = reverse(list2);
+// console.log(result2); // logs  ["abc"]
+// console.log(list2 === result2); // logs true
+
+// let list3 = [];
+// let result3 = reverse(list3);
+// console.log(result3); // logs []
+// console.log(list3 === result3); // logs true
+
+// function isBalanced(string) {
+//   let array = string.split('');
+//   let leftParenthesis = [];
+//   let rightParenthesis = [];
+//   let balanced = false;
+//   array.forEach((char, index) => {
+//     if (char === '(') {
+//       leftParenthesis.push(index);
+//     } else if (char === ')') {
+//       rightParenthesis.push(index);
+//     }
+//   });
+//   if (leftParenthesis.length === rightParenthesis.length) {
+//     balanced = true;
+//   }
+//   for (let i = 0; i < rightParenthesis.length; i++) {
+//     if (leftParenthesis[i] >= rightParenthesis[i]) {
+//       balanced = false;
+//       break;
+//     }
+//   }
+//   return balanced;
+// }
+
+// console.log(isBalanced("What (is) this?") === true);
+// console.log(isBalanced("What is) this?") === false);
+// console.log(isBalanced("What (is this?") === false);
+// console.log(isBalanced("((What) (is this))?") === true);
+// console.log(isBalanced("((What)) (is this))?") === false);
+// console.log(isBalanced("Hey!") === true);
+// console.log(isBalanced(")Hey!(") === false);
+// console.log(isBalanced("What ((is))) up(") === false);
+
+// function sum(integer) {
+//   let digits = String(integer).split('');
+//   let sum = 0;
+//   digits.forEach(digit => {
+//     digit = Number(digit);
+//     sum += digit;
+//   })
+//   console.log(sum);
+// }
+
+// sum(23);           // 5
+// sum(496);          // 19
+// sum(123456789);    // 45
+
+// const writtenNumbers = ['zero', 'one', 'two', 'three', 'four', 'five',
+// 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve',
+// 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen',
+// 'nineteen'];
+
+// function alphabeticNumberSort(array) {
+//   writtenNumbers.forEach((number, index) => {
+//     for (let i = 0; i < array.length; i++) {
+//       if (array[i] === index) {
+//         array[i] = number;
+//       }
+//     }
+//   });
+//   array.sort();
+//   writtenNumbers.forEach((number, index) => {
+//     for (let i = 0; i < array.length; i++) {
+//       if (array[i] === number) {
+//         array[i] = index;
+//       }
+//     }
+//   });
+//   console.log(array);
+// }
+
+// alphabeticNumberSort(
+//    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]);
+// // [8, 18, 11, 15, 5, 4, 14, 9, 19, 1, 7, 17, 6, 16, 10, 13, 3, 12, 2, 0]
+
+// function multiplyAllPairs(array1, array2) {
+//   let productArray = [];
+//   array1.forEach(integer1 => {
+//     array2.forEach(integer2 => {
+//       productArray.push(integer2 * integer1);
+//     })
+//   })
+//   return productArray.sort((a, b) => a - b);
+// }
+
+// multiplyAllPairs([2, 4], [4, 3, 1, 2]);    // [2, 4, 4, 6, 8, 8, 12, 16]
+
+// function leadingSubstrings(string) {
+//   // let subArray = [];
+//   // let subString = '';
+//   // for (let char = 0; char < string.length; char++) {
+//   //   subString += string[char];
+//   //   subArray.push(subString);
+//   // }
+//   // console.log(subArray);
+
+//   let charArray = string.split('');
+//   let subString = ''
+//   let subArray = charArray.map(char => {
+//     subString += char;
+//     return subString;
+//   })
+
+//   return subArray;
+// }
+
+// leadingSubstrings('abc');      // ["a", "ab", "abc"]
+// leadingSubstrings('a');        // ["a"]
+// leadingSubstrings('xyzzy');    // ["x", "xy", "xyz", "xyzz", "xyzzy"]
+
+// function substrings(string) {
+//   let substringArray = [];
+//   for (let char = 0; char < string.length; char++) {
+//     let subString = string.substring(char);
+//     let array = leadingSubstrings(subString);
+//     substringArray.push(array);
+//   }
+//   return substringArray.flat();
+// }
+
+// substrings('abcde');
+
+// // returns
+// // [ "a", "ab", "abc", "abcd", "abcde",
+// //   "b", "bc", "bcd", "bcde",
+// //   "c", "cd", "cde",
+// //   "d", "de",
+// //   "e" ]
+
+// function palindromes(string) {
+//   return substrings(string).filter(isPalindrome);
+// }
+
+// palindromes('abcd');       // []
+// palindromes('madam');      // [ "madam", "ada" ]
+
+// palindromes('hello-madam-did-madam-goodbye');
+// // returns
+// // [ "ll", "-madam-", "-madam-did-madam-", "madam", "madam-did-madam", "ada",
+// //   "adam-did-mada", "dam-did-mad", "am-did-ma", "m-did-m", "-did-", "did",
+// //   "-madam-", "madam", "ada", "oo" ]
+
+// palindromes('knitting cassettes');
+// // returns
+// // [ "nittin", "itti", "tt", "ss", "settes", "ette", "tt" ]
+
+// function sumOfSums(array) {
+//   let sum = 0;
+//   for (let i = 1; i <= array.length; i++) {
+//     sum += array.slice(0, i).reduce((accum, current) => accum + current);
+//   }
+//   return sum;
+// }
+
+// sumOfSums([3, 5, 2]);        // (3) + (3 + 5) + (3 + 5 + 2) --> 21
+// sumOfSums([1, 5, 7, 3]);     // (1) + (1 + 5) + (1 + 5 + 7) + (1 + 5 + 7 + 3) --> 36
+// sumOfSums([4]);              // 4
+// sumOfSums([1, 2, 3, 4, 5]);  // 35
+
+// function buyFruit(array) {
+//   let newArray = [];
+//   array.forEach(item => {
+//     for (let i = 1; i <= item[1]; i++) {
+//       newArray.push(item[0]);
+//     }
+//   });
+//   return newArray;
+// }
+
+// buyFruit([['apple', 3], ['orange', 1], ['banana', 2]]);
+// // returns ["apple", "apple", "apple", "orange", "banana", "banana"]
+
+// function transactionsFor(value, array) {
+//   return array.filter(object => object.id === Number(value));
+// }
+
+// let transactions = [ { id: 101, movement: 'in',  quantity:  5 },
+//                      { id: 105, movement: 'in',  quantity: 10 },
+//                      { id: 102, movement: 'out', quantity: 17 },
+//                      { id: 101, movement: 'in',  quantity: 12 },
+//                      { id: 103, movement: 'out', quantity: 20 },
+//                      { id: 102, movement: 'out', quantity: 15 },
+//                      { id: 105, movement: 'in',  quantity: 25 },
+//                      { id: 101, movement: 'out', quantity: 18 },
+//                      { id: 102, movement: 'in',  quantity: 22 },
+//                      { id: 103, movement: 'out', quantity: 15 }, ];
+
+// transactionsFor(101, transactions);
+// // returns
+// // [ { id: 101, movement: "in",  quantity:  5 },
+// //   { id: 101, movement: "in",  quantity: 12 },
+// //   { id: 101, movement: "out", quantity: 18 }, ]
+
+// function isItemAvailable(value, array) {
+//   let valueArray = transactionsFor(value, array);
+//   let sum = 0;
+//   valueArray.forEach(object => {
+//     if (object.movement === 'in') sum += object.quantity;
+//     else if (object.movement === 'out') sum -= object.quantity;
+//   });
+//   return sum > 0;
+// }
+
+// isItemAvailable(101, transactions);     // false
+// isItemAvailable(103, transactions);     // false
+// isItemAvailable(105, transactions);     // true
