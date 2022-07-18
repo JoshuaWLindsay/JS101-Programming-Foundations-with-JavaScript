@@ -1469,3 +1469,324 @@ function prompt(string) {
 // isItemAvailable(101, transactions);     // false
 // isItemAvailable(103, transactions);     // false
 // isItemAvailable(105, transactions);     // true
+
+// function isUppercase(string) {
+//   return string === string.toUpperCase();
+// }
+
+// isUppercase('t');               // false
+// isUppercase('T');               // true
+// isUppercase('Four Score');      // false
+// isUppercase('FOUR SCORE');      // true
+// isUppercase('4SCORE!');         // true
+// isUppercase('');                // true
+
+// function removeVowels(array) {
+//   return array.map(string => {
+//     return string.split('').filter(char => !['a', 'e', 'i', 'o', 'u']
+//     .includes(char.toLowerCase())).join('');
+//   });
+// }
+
+// function removeVowels(strings) {
+//   return strings.map(string => string.replace(/[aeiou]/gi, ""));
+// }
+
+// removeVowels(['abcdefghijklmnopqrstuvwxyz']);         // ["bcdfghjklmnpqrstvwxyz"]
+// removeVowels(['green', 'YELLOW', 'black', 'white']);  // ["grn", "YLLW", "blck", "wht"]
+// removeVowels(['ABC', 'AEIOU', 'XYZ']);                // ["BC", "", "XYZ"]
+
+// function letterCaseCount(string) {
+//   let object = {lowercase: 0, uppercase: 0, neither: 0};
+
+//   string.split('').forEach(char => {
+//     if (/[a-z]/g.exec(char) !== null) object.lowercase++;
+//     else if (/[A-Z]/g.exec(char) !== null) object.uppercase++;
+//     else object.neither++;
+//   })
+
+//   console.log(object);
+// }
+
+// letterCaseCount('abCdef 123');  // { lowercase: 5, uppercase: 1, neither: 4 }
+// letterCaseCount('AbCd +Ef');    // { lowercase: 3, uppercase: 3, neither: 2 }
+// letterCaseCount('123');         // { lowercase: 0, uppercase: 0, neither: 3 }
+// letterCaseCount('');            // { lowercase: 0, uppercase: 0, neither: 0 }
+
+// function wordCap(string) {
+//   return string.split(' ').map(word => {
+//     let wordArray = word.split('');
+//     return wordArray.shift().toUpperCase() + wordArray.join('');
+//   }).join(' ');
+// }
+
+// wordCap('four score and seven');       // "Four Score And Seven"
+// wordCap('the javaScript language');    // "The Javascript Language"
+// wordCap('this is a "quoted" word');    // 'This Is A "quoted" Word'
+
+// function swapCase(string) {
+//   return string.split('').map(char => {
+//     if (/[a-z]/.exec(char) !== null) {
+//       return char.toUpperCase();
+//     } else if (/[A-Z]/.exec(char) !== null) {
+//       return char.toLowerCase();
+//     } else {
+//       return char;
+//     }
+//   }).join('');
+// }
+
+// swapCase('CamelCase');              // "cAMELcASE"
+// swapCase('Tonight on XYZ-TV');      // "tONIGHT ON xyz-tv"
+
+// function staggeredCase(string) {
+//   return string.split('').map((char, index) => {
+//     if (index % 2 === 0) return char.toUpperCase();
+//     else return char.toLowerCase();
+//   }).join('');
+// }
+
+// staggeredCase('I Love Launch School!');        // "I LoVe lAuNcH ScHoOl!"
+// staggeredCase('ALL_CAPS');                     // "AlL_CaPs"
+// staggeredCase('ignore 77 the 4444 numbers');   // "IgNoRe 77 ThE 4444 nUmBeRs"
+
+// function staggeredCase(string) {
+//   let count = 0;
+//   return string.split('').map((char) => {
+//     if (/[a-z]/gi.exec(char) === null) {
+//       return char;
+//     } else if (count % 2 === 0) {
+//       count++;
+//       return char.toUpperCase();
+//     } else {
+//       count++;
+//       return char.toLowerCase();
+//     }
+//   }).join('');
+// }
+
+// console.log(staggeredCase("I Love Launch School!") === "I lOvE lAuNcH sChOoL!");
+// console.log(staggeredCase("ALL CAPS") === "AlL cApS");
+// console.log(
+//   staggeredCase("ignore 77 the 444 numbers") === "IgNoRe 77 ThE 444 nUmBeRs"
+// );
+
+// function wordLengths(string) {
+//   if (typeof string !== 'string' || string.length === 0) return [];
+//   return string.split(' ').map(word => word + ' ' + word.length);
+// }
+
+// wordLengths('cow sheep chicken');
+// // ["cow 3", "sheep 5", "chicken 7"]
+
+// wordLengths('baseball hot dogs and apple pie');
+// // ["baseball 8", "hot 3", "dogs 4", "and 3", "apple 5", "pie 3"]
+
+// wordLengths("It ain't easy, is it?");
+// // ["It 2", "ain't 5", "easy, 5", "is 2", "it? 3"]
+
+// wordLengths('Supercalifragilisticexpialidocious');
+// // ["Supercalifragilisticexpialidocious 34"]
+
+// wordLengths('');      // []
+// wordLengths();        // []
+
+// function searchWord(exp, string) {
+//   let regex = new RegExp(exp, 'gi');
+//   let count = 0;
+//   let stringArray = string.split(' ');
+//   stringArray.forEach(word => {
+//     if (regex.exec(word) !== null) count++;
+//   });
+//   console.log(count);
+// }
+
+// const text = 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?';
+
+// searchWord('qui', text);      // 3
+
+// function searchWord(exp, string) {
+//   let regex = new RegExp(exp, 'gi');
+//   console.log(string.split(' ').map(word => {
+//     if (regex.exec(word) !== null) return `**${word.toUpperCase()}**`;
+//     else return word;
+//   }).join(' '));
+// }
+
+// const text = 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Sed quis autem vel est, iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur blasedbla?';
+
+// searchWord('sed', text);
+// // returns
+// // "**SED** ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, **SED** quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, **SED** quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? **SED** quis autem vel est, iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur blasedbla?"
+
+// function rotateArray(array) {
+//   if (!Array.isArray(array)) return undefined;
+//   else if (array.length === 0) return array;
+//   let rotatedArray = array.slice();
+//   let firstElement = rotatedArray.shift();
+//   rotatedArray.push(firstElement);
+//   return rotatedArray; 
+// }
+
+// rotateArray([7, 3, 5, 2, 9, 1]);       // [3, 5, 2, 9, 1, 7]
+// rotateArray(['a', 'b', 'c']);          // ["b", "c", "a"]
+// rotateArray(['a']);                    // ["a"]
+// rotateArray([1, 'a', 3, 'c']);         // ["a", 3, "c", 1]
+// rotateArray([{ a: 2 }, [1, 2], 3]);    // [[1, 2], 3, { a: 2 }]
+// rotateArray([]);                       // []
+
+// // return `undefined` if the argument is not an array
+// rotateArray();                         // undefined
+// rotateArray(1);                        // undefined
+
+
+// // the input array is not mutated
+// let array = [1, 2, 3, 4];
+// rotateArray(array);                    // [2, 3, 4, 1]
+// array;                                 // [1, 2, 3, 4]
+
+// function rotateRightmostDigits(number, count) {
+//   let rightDigits = String(number).slice(-count).split('');
+//   let leftDigits = String(number).slice(0, -count);
+//   rightDigits = rotateArray(rightDigits).join('');
+//   let rotatedNumber = Number(leftDigits + rightDigits);
+//   return rotatedNumber;
+//   // return Number(String(number).split('').filter((digit, index) => {
+//   //   return index !== (String(number).length - count);
+//   // }).join('') + String(number)[String(number).length - count]);
+// }
+
+// rotateRightmostDigits(735291, 1);      // 735291
+// rotateRightmostDigits(735291, 2);      // 735219
+// rotateRightmostDigits(735291, 3);      // 735912
+// rotateRightmostDigits(735291, 4);      // 732915
+// rotateRightmostDigits(735291, 5);      // 752913
+// rotateRightmostDigits(735291, 6);      // 352917
+
+// function maxRotation(number) {
+//   let numberLength = String(number).length;
+//   for (let i = numberLength; i > 0; i--) {
+//     number = rotateRightmostDigits(number, i);
+//   }
+//   return number;
+// }
+
+// maxRotation(735291);          // 321579
+// maxRotation(3);               // 3
+// maxRotation(35);              // 53
+// maxRotation(105);             // 15 -- the leading zero gets dropped
+// maxRotation(8703529146);      // 7321609845
+
+// function minilang(command) {
+//   let stack = [];
+//   let register = 0;
+//   let commandArray = command.split(' ');
+//   commandArray.forEach(token => {
+//     if (Number.isInteger(+token)) {
+//       register = Number(token);
+//     }
+    
+//     switch (token) {
+//       case 'PUSH':
+//         stack.push(register);
+//         break;
+//       case 'ADD':
+//         register += stack.pop();
+//         break;
+//       case 'SUB':
+//         register -= stack.pop();
+//         break;
+//       case 'MULT':
+//         register *= stack.pop();
+//         break;
+//       case 'DIV':
+//         register /= stack.pop();
+//         register = Math.floor(register);
+//         break;
+//       case 'REMAINDER':
+//         register %= stack.pop();
+//         break;
+//       case 'POP':
+//         register = stack.pop();
+//         break;
+//       case 'PRINT':
+//         console.log(register);
+//         break;
+//       default:
+//         break;
+//     }
+//   })
+// }
+
+// minilang('PRINT');
+// // 0
+
+// minilang('5 PUSH 3 MULT PRINT');
+// // 15
+
+// minilang('5 PRINT PUSH 3 PRINT ADD PRINT');
+// // 5
+// // 3
+// // 8
+
+// minilang('5 PUSH POP PRINT');
+// // 5
+
+// minilang('3 PUSH 4 PUSH 5 PUSH PRINT ADD PRINT POP PRINT ADD PRINT');
+// // 5
+// // 10
+// // 4
+// // 7
+
+// minilang('3 PUSH PUSH 7 DIV MULT PRINT');
+// // 6
+
+// minilang('4 PUSH PUSH 7 REMAINDER MULT PRINT');
+// // 12
+
+// minilang('-3 PUSH 5 SUB PRINT');
+// // 8
+
+// minilang('6 PUSH');
+// // (nothing is printed because the `program` argument has no `PRINT` commands)
+
+// function wordToDigit(string) {
+//   const digitWords = ['zero', 'one', 'two', 'three', 'four', 'five', 'six',
+//                'seven', 'eight', 'nine'];
+//   let regex = /\w+|\s+|[^\s\w]+/g;
+//   let wordsArray = string.match(regex);
+//   wordsArray = wordsArray.map(word => {
+//     digitWords.forEach((number, index) => {
+//       if (word === number) {
+//         word = index;
+//       }
+//     })
+//     return word;
+//   })
+//   console.log(wordsArray.join(''));
+// }
+
+// wordToDigit('Please call me at five five five one two three four. Thanks.');
+// // "Please call me at 5 5 5 1 2 3 4. Thanks."
+
+function fibonacci(term) {
+  
+}
+
+fibonacci(1);       // 1
+fibonacci(2);       // 1
+fibonacci(3);       // 2
+fibonacci(4);       // 3
+fibonacci(5);       // 5
+fibonacci(12);      // 144
+fibonacci(20);      // 6765
+
+
+
+
+
+
+
+
+
+
