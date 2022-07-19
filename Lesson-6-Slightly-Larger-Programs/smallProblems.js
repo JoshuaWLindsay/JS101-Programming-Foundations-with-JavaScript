@@ -1505,7 +1505,7 @@ function prompt(string) {
 //     else object.neither++;
 //   })
 
-//   console.log(object);
+//   return object;
 // }
 
 // letterCaseCount('abCdef 123');  // { lowercase: 5, uppercase: 1, neither: 4 }
@@ -1770,16 +1770,263 @@ function prompt(string) {
 // // "Please call me at 5 5 5 1 2 3 4. Thanks."
 
 function fibonacci(term) {
-  
+  let termMinus2 = 1;
+  let termMinus1 = 1;
+  let termValue = 0;
+  if (term === 1 || term === 2) {
+    return termValue = 1;
+  }
+  for (let i = 3; i <= term; i++) {
+    termValue = termMinus2 + termMinus1;
+    termMinus2 = termMinus1;
+    termMinus1 = termValue;
+  }
+  console.log(termValue);
 }
 
-fibonacci(1);       // 1
-fibonacci(2);       // 1
-fibonacci(3);       // 2
-fibonacci(4);       // 3
-fibonacci(5);       // 5
-fibonacci(12);      // 144
-fibonacci(20);      // 6765
+// function fibonacci(nth) {
+//   if (nth <= 2) {
+//     return 1;
+//   }
+//   return fibonacci(nth - 1) + fibonacci(nth - 2);
+// }
+
+// fibonacci(1);       // 1
+// fibonacci(2);       // 1
+// fibonacci(3);       // 2
+// fibonacci(4);       // 3
+// fibonacci(5);       // 5
+// fibonacci(12);      // 144
+// fibonacci(20);      // 6765
+
+// fibonacci(20);       // 6765
+// fibonacci(50);       // 12586269025
+// fibonacci(75);       // 2111485077978050
+
+// function letterPercentages(string) {
+//   let percentObject = letterCaseCount(string);
+//   percentObject.lowercase = (percentObject.lowercase / string.length * 100)
+//   .toFixed(2);
+//   percentObject.uppercase = (percentObject.uppercase / string.length * 100)
+//   .toFixed(2);
+//   percentObject.neither = (percentObject.neither / string.length * 100)
+//   .toFixed(2);
+//   return percentObject;
+// }
+
+// letterPercentages('abCdef 123');
+// // { lowercase: "50.00", uppercase: "10.00", neither: "40.00" }
+
+// letterPercentages('AbCd +Ef');
+// // { lowercase: "37.50", uppercase: "37.50", neither: "25.00" }
+
+// letterPercentages('123');
+// // { lowercase: "0.00", uppercase: "0.00", neither: "100.00" }
+
+// function triangle(side1, side2, side3) {
+//   let triArray = [side1, side2, side3].sort((a, b) => a - b);
+//   if (triArray[0] + triArray[1] <= triArray[2] || triArray[0] === 0) {
+//     console.log(`invalid`);
+//   } else if (side1 === side2 && side2 === side3) {
+//     console.log(`equilateral`);
+//   } else if (triArray[0] === triArray[1] || triArray[1] === triArray[2]) {
+//     console.log(`isosceles`);
+//   } else {
+//     console.log(`scalene`);
+//   }
+// }
+
+// triangle(3, 3, 3);        // "equilateral"
+// triangle(3, 3, 1.5);      // "isosceles"
+// triangle(3, 4, 5);        // "scalene"
+// triangle(0, 3, 3);        // "invalid"
+// triangle(3, 1, 1);        // "invalid"
+
+// function triAngle(angle1, angle2, angle3) {
+//   let triArray = [angle1, angle2, angle3].sort((a, b) => a - b);
+//   if (triArray[0] + triArray[1] + triArray[2] !== 180 || triArray[0] === 0) {
+//     console.log(`invalid`);
+//   } else if (triArray[2] < 90) {
+//     console.log(`acute`);
+//   } else if (triArray[2] === 90) {
+//     console.log(`right`);
+//   } else {
+//     console.log(`obtuse`);
+//   }
+// }
+
+// triAngle(60, 70, 50);       // "acute"
+// triAngle(30, 90, 60);       // "right"
+// triAngle(120, 50, 10);      // "obtuse"
+// triAngle(0, 90, 90);        // "invalid"
+// triAngle(50, 50, 50);       // "invalid"
+
+// function fridayThe13ths(year) {
+//   let count = 0;
+//   for (let month = 0; month < 12; month++) {
+//     let day = new Date(year, month);
+//     day.setDate(13);
+//     if (day.getDay() === 5) count++;
+//   }
+//   return count;
+// }
+
+// fridayThe13ths(1986);      // 1
+// fridayThe13ths(2015);      // 3
+// fridayThe13ths(2017);      // 2
+
+// function repeats(number) {
+//   let repeats = false;
+//   let digits = String(number).split('').sort((a, b) => a - b);
+//   for (let i = 0; i < digits.length; i++) {
+//     if (digits[i] === digits[i - 1]) {
+//       repeats = true;
+//       break;
+//     }
+//   }
+//   return repeats;
+// }
+
+// function featured(number) {
+//   let featuredNumber = 7;
+//   let factor = 1;
+//   if (number >= 9876543201) {
+//     return `There is no possible number that fulfills those requirements.`;
+//   }
+//   while (number >= featuredNumber || repeats(featuredNumber)) {
+//     featuredNumber = 7 * factor;
+//     factor += 2;
+//   }
+//   return featuredNumber;
+// }
+
+// featured(12);           // 21
+// featured(20);           // 21
+// featured(21);           // 35
+// featured(997);          // 1029
+// featured(1029);         // 1043
+// featured(999999);       // 1023547
+// featured(999999987);    // 1023456987
+// featured(9876543186);   // 9876543201
+// featured(9876543200);   // 9876543201
+// featured(9876543201);   // "There is no possible number that fulfills those requirements."
+
+// function factorial(number) {
+//   let factorial = 1;
+//   for (let i = number; i > 0; i--) {
+//     factorial *= i;
+//   }
+//   console.log(factorial);
+// }
+
+// factorial(10);
+
+// function sumSquareDifference(count) {
+//   let sequence = [];
+//   for (let i = count; i > 0; i--) {
+//     sequence.push(i);
+//   }
+//   let squareOfSums = sequence.reduce((a, b) => a + b, 0) ** 2;
+//   let sumOfSquares = sequence.map(number => number ** 2);
+//   sumOfSquares = sumOfSquares.reduce((a, b) => a + b, 0);
+//   let difference = squareOfSums - sumOfSquares;
+//   console.log(difference);
+// }
+
+// sumSquareDifference(3);      // 22 --> (1 + 2 + 3)**2 - (1**2 + 2**2 + 3**2)
+// sumSquareDifference(10);     // 2640
+// sumSquareDifference(1);      // 0
+// sumSquareDifference(100);    // 25164150
+
+// function compareValues(a, b) {
+//   if (a > b) {
+//     return 1;
+//   } else if (a < b) {
+//     return -1;
+//   } else {
+//     return 0;
+//   }
+// }
+
+// function bubbleSort(array) {
+//   array.sort(compareValues);
+//   console.log(array);
+// }
+
+// let array1 = [5, 3];
+// bubbleSort(array1);
+// console.log(array1);    // [3, 5]
+
+// let array2 = [6, 2, 7, 1, 4];
+// bubbleSort(array2);
+// console.log(array2);    // [1, 2, 4, 6, 7]
+
+// let array3 = ['Sue', 'Pete', 'Alice', 'Tyler', 'Rachel', 'Kim', 'Bonnie'];
+// bubbleSort(array3);
+// console.log(array3);    // ["Alice", "Bonnie", "Kim", "Pete", "Rachel", "Sue", "Tyler"]
+
+function longestSentence(string) {
+  let regex = /[.!?]|[\s\w,'-]+/gi;
+  let sentenceArray = string.match(regex);
+  let longIndex = 0;
+  let length = 0;
+  sentenceArray.forEach((sentence, index) => {
+    let sentenceLength = sentence.trim().split(' ').length;
+    if (sentenceLength > length) {
+      length = sentenceLength;
+      longIndex = index;
+    }
+  })
+  console.log(sentenceArray[longIndex].trim() + sentenceArray[longIndex + 1]);
+  console.log(`The longest sentence has ${length} words.`)
+}
+
+let longText =
+  'Four score and seven years ago our fathers brought forth on this ' +
+  'continent a new nation, conceived in liberty, and dedicated to the ' +
+  'proposition that all men are created equal. Now we are engaged in a ' +
+  'great civil war, testing whether that nation, or any nation so ' +
+  'conceived and so dedicated, can long endure. We are met on a great ' +
+  'battlefield of that war. We have come to dedicate a portion of that ' +
+  'field, as a final resting place for those who here gave their lives ' +
+  'that that nation might live. It is altogether fitting and proper that ' +
+  'we should do this.';
+
+let longerText = longText +
+  'But, in a larger sense, we can not dedicate, we can not consecrate, ' +
+  'we can not hallow this ground. The brave men, living and dead, who ' +
+  'struggled here, have consecrated it, far above our poor power to add ' +
+  'or detract. The world will little note, nor long remember what we say ' +
+  'here but it can never forget what they did here. It is for us the ' +
+  'living, rather, to be dedicated here to the unfinished work which ' +
+  'they who fought here have thus far so nobly advanced. It is rather ' +
+  'for us to be here dedicated to the great task remaining before us -- ' +
+  'that from these honored dead we take increased devotion to that ' +
+  'cause for which they gave the last full measure of devotion -- that ' +
+  'we here highly resolve that these dead shall not have died in vain ' +
+  '-- that this nation, under God, shall have a new birth of freedom -- ' +
+  'and that government of the people, by the people, for the people, ' +
+  'shall not perish from the earth.';
+
+longestSentence(longText);
+// Four score and seven years ago our fathers brought forth on this continent a new nation, conceived in liberty, and dedicated to the proposition that all men are created equal.
+//
+// The longest sentence has 30 words.
+
+longestSentence(longerText);
+// It is rather for us to be here dedicated to the great task remaining before us -- that from these honored dead we take increased devotion to that cause for which they gave the last full measure of devotion -- that we here highly resolve that these dead shall not have died in vain -- that this nation, under God, shall have a new birth of freedom -- and that government of the people, by the people, for the people, shall not perish from the earth.
+//
+// The longest sentence has 86 words.
+
+longestSentence("Where do you think you're going? What's up, Doc?");
+// Where do you think you're going?
+//
+// The longest sentence has 6 words.
+
+longestSentence("To be or not to be! Is that the question?");
+// To be or not to be!
+//
+// The longest sentence has 6 words.
 
 
 
